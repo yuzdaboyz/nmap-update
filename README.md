@@ -1,2 +1,2 @@
 # nmap-update
-simple nma-update tool for windows.
+simple nmap-update tool for windows.
