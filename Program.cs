@@ -1,5 +1,11 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace nmap_update
@@ -19,7 +25,7 @@ namespace nmap_update
             Version nver;
             string ntype, dst = "";
             List<string> fList = new List<string>();
-            string url = new string("https://nmap.org/download.html");
+            string url = "https://nmap.org/download.html";
             Versions rx = new Versions();
             List<Versions> lv = new List<Versions>();
 
@@ -32,7 +38,7 @@ namespace nmap_update
             {
                 url = match.Groups["url"].Value;
                 dst = Path.GetTempPath() + Path.GetFileName(url);
-                string[] vx = Path.GetFileName(url).Split("-");
+                string[] vx = Path.GetFileName(url).Split('-');
                 ntype = vx[0].ToString();
                 string nx = vx[1].ToString().Replace(".exe", "");
                 nver = new Version(nx);
